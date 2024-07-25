@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded and parsed");
     const addButton = document.getElementById('add-todo');
     const todoInput = document.getElementById('new-todo');
     const todoList = document.getElementById('todo-list');
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function addTodoItem() {
+        console.log("Add button clicked");
         const todoText = todoInput.value.trim();
         if (todoText !== "") {
             const listItem = document.createElement('li');
@@ -22,16 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteButton.textContent = 'Delete';
             deleteButton.addEventListener('click', deleteTodoItem);
 
+            const span = document.createElement('span');
+            span.textContent = todoText;
+
             listItem.appendChild(checkbox);
-            listItem.appendChild(document.createTextNode(todoText));
+            listItem.appendChild(span);
             listItem.appendChild(deleteButton);
 
             todoList.appendChild(listItem);
             todoInput.value = '';
+
+            // Effect
+            console.log("Triggering confetti");
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            console.log("Confetti triggered");
         }
     }
 
     function toggleComplete(event) {
+        console.log("Checkbox toggled");
         const listItem = event.target.parentElement;
         if (event.target.checked) {
             listItem.classList.add('completed');
@@ -42,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function deleteTodoItem(event) {
+        console.log("Delete button clicked");
         const listItem = event.target.parentElement;
         todoList.removeChild(listItem);
     }

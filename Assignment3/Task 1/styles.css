@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #FFE4E1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,19 +8,22 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #778899;
 }
 
 #new-todo {
     padding: 10px;
     font-size: 16px;
     margin-right: 10px;
+    border-radius: 5px;
 }
 
 #add-todo {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 5px; 
+    background-color: #3CB371; 
 }
 
 ul {
@@ -41,4 +44,15 @@ li {
 li.completed {
     text-decoration: line-through;
     color: #888;
+}
+
+li span {
+    flex-grow: 1; 
+    margin-left: 10px; 
+    margin-right: 10px; 
+}
+
+li button {
+    font-size: 18px; 
+    color: #F08080; 
 }
